@@ -13,5 +13,8 @@ Testcase :PASSED QC: Done
 TestName: Daily_Challenge_TestNG  -Updated 02-09-2025
 Testcase :PASSED QC: Done
 <img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/ae7e0f26-27ed-4b6b-abd3-5ba180e49ae5" />
+2nd Qc with the folder and file names updated
+<img width="1907" height="965" alt="image" src="https://github.com/user-attachments/assets/27a485af-fc45-475c-ab32-244734e35a74" />
+
 
 
