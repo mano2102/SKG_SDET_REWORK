@@ -1,4 +1,4 @@
-package Groww_Test;
+package runner;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,32 +8,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+import org.openqa.selenium.support.events.WebDriverListener;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.WebDriverListener;
+
 import utils.EventHandler;
 
-public class Test_groww {
+public class TestRunner {
 	public static WebDriver driver;
-	public static int PAGE_LOAD_TIME = 10;
+	static int PAGE_LOAD_TIME = 20;
 
 	@BeforeMethod
 	public WebDriver beforeMethod() throws MalformedURLException {
 		ChromeOptions chromeOptions = new ChromeOptions();
 		driver = new RemoteWebDriver(new URL("http://localhost:4444/"), chromeOptions);
-
 		driver.get("https://groww.in/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIME));
 		WebDriverListener listener = new EventHandler();
 		driver = new EventFiringDecorator<>(listener).decorate(driver);
 		return driver;
+
 	}
+
 
 	@Test
 	public void testOne() throws InterruptedException {
@@ -71,10 +74,12 @@ public class Test_groww {
 
 	}
 
+	
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
 		}
 	}
+
 }
